@@ -1,8 +1,9 @@
 *.o
 **/*.o
-philo
+cub3d
 .vscode/launch.json
 .vscode/settings.json
 .vscode/settings.json
 .vscode/tasks.json
 .vscode/settings.json
+mlx_linux
