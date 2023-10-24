@@ -10,14 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx_linux/mlx.h"
+#include "cub3d.h"
 
-int	main(void)
+int	main(int ac, char **av)
 {
-	void	*mlx;
-	void	*mlx_win;
-
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	mlx_loop(mlx);
+    t_vars var;
+    //ft_parsing(ac, av);
+    if (ac > 2 || ac == 1)
+    {
+        printf("%s \n", "Error\nPlease only .cub map as argument");
+        return(0);
+    }
+	var.mlx = mlx_init();
+	var.win = mlx_new_window(var.mlx, 1920, 1080, "Hello world!");
+    ft_binds(var);
+	mlx_loop(var.mlx);
 }

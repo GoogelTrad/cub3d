@@ -10,3 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef CUB3D_H
+# define CUB3D_H
+
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include "mlx_linux/mlx.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include "libft/libft.h"
+
+typedef struct s_vars {
+	void	*mlx;
+	void	*win;
+}				t_vars;
+
+void	ft_parsing(int ac, char **av);
+void	ft_binds(t_vars var);
+
+#endif

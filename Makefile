@@ -1,5 +1,9 @@
-SRCS = main.c
+SRCS = main.c\
+	   cub3d.c\
+	   parsing_map.c\
+	   binding.c
 OBJS = $(SRCS:.c=.o)
+LIBFT			= libft/libft.a
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
 NAME = cub3d
@@ -8,14 +12,17 @@ COMPIL_LINUX = -I/usr/include -Imlx_linux
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	gcc $(OBJS) $(LLINKS) -o $(NAME)
+$(NAME): ${LIBFT} $(OBJS)
+	gcc $(OBJS) $(LLINKS) ${LIBFT} -o $(NAME)
+
+$(LIBFT):
+	make -C libft
 
 clean: 
-	rm -rf $(OBJS) $(OBJS_BONUS)
+	rm -rf $(OBJS) $(OBJS_BONUS) ${LIBFT}
 
 fclean: clean 
-	rm -rf $(NAME) $(NAME_BONUS)
+	rm -rf $(NAME) $(NAME_BONUS) ${LIBFT}
 
 re: fclean all
 
