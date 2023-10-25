@@ -1,9 +1,13 @@
 SRCS = main.c\
 	   cub3d.c\
 	   parsing_map.c\
-	   binding.c
+	   binding.c\
+	   utils.c\
+	   get_next_line.c\
+
+
 OBJS = $(SRCS:.c=.o)
-LIBFT			= libft/libft.a
+LIBFT = libft/libft.a
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
 NAME = cub3d

@@ -14,15 +14,16 @@
 
 int	main(int ac, char **av)
 {
-    t_vars var;
-    //ft_parsing(ac, av);
+    t_data data;
+
+    ft_parsing(ac, av, &data);
     if (ac > 2 || ac == 1)
     {
         printf("%s \n", "Error\nPlease only .cub map as argument");
         return(0);
     }
-	var.mlx = mlx_init();
-	var.win = mlx_new_window(var.mlx, 1920, 1080, "Hello world!");
-    ft_binds(var);
-	mlx_loop(var.mlx);
+	data.mlx = mlx_init();
+	data.win = mlx_new_window(data.mlx, WIDTH, HEIGHT, "Cub3D !");
+    ft_binds(data);
+	mlx_loop(data.mlx);
 }

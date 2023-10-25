@@ -1,24 +1,36 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   binding.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/25 15:00:38 by cmichez           #+#    #+#             */
+/*   Updated: 2023/10/25 15:00:38 by cmichez          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
-int	d_close(t_vars *var)
+int	d_close(t_data *data)
 {
-	mlx_destroy_window(var->mlx, var->win);
+	mlx_destroy_window(data->mlx, data->win);
 	exit(0);
 }
 
-int	handle_key_press(int keycode, t_vars *var)
+int	handle_key_press(int keycode, t_data *data)
 {
     //printf("%d \n", keycode);
 	if (keycode == 65307)
 	{
-		mlx_destroy_window(var->mlx, var->win);
+		mlx_destroy_window(data->mlx, data->win);
 		exit(0);
 	}
 	return (0);
 }
 
-void ft_binds(t_vars var)
+void ft_binds(t_data data)
 {
-    mlx_hook(var.win, 2, 1L << 0, handle_key_press, &var);
-    mlx_hook(var.win, 17, 0L, d_close, &var);
+    mlx_hook(data.win, 2, 1L << 0, handle_key_press, &data);
+    mlx_hook(data.win, 17, 0L, d_close, &data);
 }

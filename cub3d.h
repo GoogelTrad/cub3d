@@ -21,12 +21,28 @@
 #include <stdlib.h>
 #include "libft/libft.h"
 
-typedef struct s_vars {
+# define WIDTH 1366
+# define HEIGHT 768
+
+# define BUFFER_SIZE 1
+
+typedef struct s_data {
 	void	*mlx;
 	void	*win;
-}				t_vars;
+	char	**map;
+}				t_data;
 
-void	ft_parsing(int ac, char **av);
-void	ft_binds(t_vars var);
+
+//parsing_map.c
+void	ft_parsing(int ac, char **av, t_data *data);
+void	ft_binds(t_data data);
+
+//utils.c
+int		count_line(char *pathname);
+char	*ft_strcpy(char *dest, char *src);
+char	*ft_strcat(char *dest, char *src);
+
+//get_next_line.c
+char    *get_next_line(int fd);
 
 #endif
