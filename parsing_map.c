@@ -56,7 +56,7 @@ char **init_map(char *pathname)
 	map = malloc(sizeof(char *) * (count + 1));
 	while(i < count)
 	{
-		map[i] = ft_strdup(get_next_line(fd));
+		map[i] = get_next_line(fd);
 		i++;
 	}
 	map[i] = NULL;

@@ -6,7 +6,7 @@
 /*   By: cmichez <cmichez@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 10:23:08 by cmichez           #+#    #+#             */
-/*   Updated: 2023/10/25 17:41:44 by cmichez          ###   ########.fr       */
+/*   Updated: 2023/10/25 17:58:30 by cmichez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ char    *get_next_line(int fd)
     {
         i = 0;
         line = read_new_char(tmp, line);
-        //printf("tmp = %d\n", ft_strlen(tmp));
-        //printf("line = %d\n", ft_strlen(line));
         while(line[i])
         {
             if(line[i] == '\n')
