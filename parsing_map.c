@@ -59,6 +59,7 @@ char **init_map(char *pathname)
 		map[i] = get_next_line(fd);
 		i++;
 	}
+	printf("taille de ligne -1 : %d\n", ft_strlen(map[0]));
 	map[i] = NULL;
 	close(fd);
 	return (map);
@@ -69,11 +70,9 @@ void    ft_parsing(int ac, char **av, t_data *data)
 	int i;
 
 	i = 0;
-    ft_args(ac, av);
 	ft_cub(ac, av);
+    ft_args(ac, av);
 	data->map = init_map(av[1]);
-	while (data->map[i])
-		printf("%s\n", data->map[i++]);
 }
 
 /*void	ft_char(t_data *img)

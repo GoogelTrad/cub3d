@@ -4,6 +4,9 @@ SRCS = main.c\
 	   binding.c\
 	   utils.c\
 	   get_next_line.c\
+	   map.c\
+	   image.c\
+	   player.c\
 
 
 OBJS = $(SRCS:.c=.o)

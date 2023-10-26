@@ -63,3 +63,36 @@ char	*ft_strcat(char *dest, char *src)
 	dest[n] = '\0';
 	return (dest);
 }
+
+char	*ft_strncat(char *dest, char *src, int n)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (dest[j] != '\0')
+		j++;
+	while (src[i] != '\0' && i < n)
+	{
+		dest[j] = src[i];
+		i++;
+		j++;
+	}
+	dest[j] = '\0';
+	return (dest);
+}
+
+char	*ft_strncpy(char *dest, char *src, int n)
+{
+	int	i;
+
+	i = 0;
+	while (src[i] && i < n)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}
