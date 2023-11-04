@@ -143,23 +143,33 @@ void	ft_p(t_data *data)
 	}
 }
 
+char**    ft_cpytab(char **tab)
+{
+    int i;
+    char **ret;
+
+    i = 0;
+    ret = malloc(sizeof(char *) * (tabsize(tab) + 1));
+    while (tab[i])
+    {
+        ret[i] = ft_strdup(tab[i]);
+        i++;
+    }
+    ret[i] = NULL;
+    return(ret);
+}
+
 void    ft_map_parsing(t_data *data)
 {
     t_p begin;
     int i = 0;
     int j = 0;
-    data->mapcopy = data->map;
+    data->mapcopy = ft_cpytab(data->map);
+    i = 0;
     ft_p(data);
     ft_pos_player(&begin, data);
     printf("22222 \n");
     ft_fill(&begin, data);
     ft_conditions(data);
     printf("33333 \n");
-    /*
-    while(data->mapcopy[i])
-    {
-        printf("%s\n", data->mapcopy[i]);
-        i++;
-    }
-    */
 }

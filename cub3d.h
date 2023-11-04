@@ -110,6 +110,7 @@ typedef struct s_data
 //parsing_map.c
 void	ft_parsing(int ac, char **av, t_data *data);
 void	ft_binds(t_data *data);
+int     tabsize(char **cubs);
 
 
 //parsing_map2.c
