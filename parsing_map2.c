@@ -1,6 +1,6 @@
 #include "cub3d.h"
 
-void    ft_pos_player(t_player *begin, t_data *data)
+void    ft_pos_player(t_p *begin, t_data *data)
 {
     int i;
     int j;
@@ -24,7 +24,7 @@ void    ft_pos_player(t_player *begin, t_data *data)
     }
 }
 
-void	ft_fill(t_player *begin, t_data *data)
+void	ft_fill(t_p *begin, t_data *data)
 {
     data->mapcopy[begin->pos_y][begin->pos_x] = 'X';
 	if (data->mapcopy[begin->pos_y][begin->pos_x - 1] == '0')
@@ -145,7 +145,7 @@ void	ft_p(t_data *data)
 
 void    ft_map_parsing(t_data *data)
 {
-    t_player begin;
+    t_p begin;
     int i = 0;
     int j = 0;
     data->mapcopy = data->map;

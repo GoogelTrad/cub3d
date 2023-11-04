@@ -70,6 +70,12 @@ typedef struct s_player
 	float angle;
 }	t_player;
 
+typedef struct s_p
+{
+    int        pos_x;
+    int        pos_y;
+}    t_p;
+
 typedef struct s_img
 {
 	void *ref;
