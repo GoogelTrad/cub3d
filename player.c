@@ -12,30 +12,62 @@
 
 #include "cub3d.h"
 
+void init_player(t_data *data, int x, int y, char angle)
+{
+	data->player.pos.x = x;
+	data->player.pos.y = y;
+	if (angle == 'S')
+		data->player.angle = 1.5 * PI;
+	else if (angle == 'N')
+		data->player.angle = 0.5 * PI;
+	else if (angle == 'W')
+		data->player.angle = PI;
+	else if (angle == 'E')
+		data->player.angle = 0;
+	data->player.delta_x = cos(data->player.angle * 5);
+	data->player.delta_y = sin(data->player.angle * 5);
+}
+
 void move_up(t_data *data)
 {
-	draw_square(data->stock.floor, data, data->player.pos_x, data->player.pos_y);
-	data->player.pos_y -= 10;
-	draw_square(data->stock.player, data, data->player.pos_x, data->player.pos_y);
+	data->player.pos.x -= data->player.delta_x;
+	data->player.pos.y -= data->player.delta_y;
+	if (!wall_collision(data))
+	{
+		data->player.pos.x += data->player.delta_x;
+		data->player.pos.y += data->player.delta_y;
+	}
+	render_background(&data->img, data);
 }
 
 void move_down(t_data *data)
 {
-	draw_square(data->stock.floor, data, data->player.pos_x, data->player.pos_y);
-	data->player.pos_y += 10;
-	draw_square(data->stock.player, data, data->player.pos_x, data->player.pos_y);
+	data->player.pos.x += data->player.delta_x;
+	data->player.pos.y += data->player.delta_y;
+	if (!wall_collision(data))
+	{
+		data->player.pos.x -= data->player.delta_x;
+		data->player.pos.y -= data->player.delta_y;
+	}	
+	render_background(&data->img, data);
 }
 
 void move_right(t_data *data)
 {
-	draw_square(data->stock.floor, data, data->player.pos_x, data->player.pos_y);
-	data->player.pos_x += 10;
-	draw_square(data->stock.player, data, data->player.pos_x, data->player.pos_y);
+	data->player.angle += 0.15;
+	if (data->player.angle > 2 * PI)
+		data->player.angle -= 2 * PI;
+	data->player.delta_x = cos(data->player.angle) * 5;
+	data->player.delta_y = sin(data->player.angle) * 5;
+	render_background(&data->img, data);
 }
 
 void move_left(t_data *data)
 {
-	draw_square(data->stock.floor, data, data->player.pos_x, data->player.pos_y);
-	data->player.pos_x -= 10;
-	draw_square(data->stock.player, data, data->player.pos_x, data->player.pos_y);
+	data->player.angle -= 0.15;
+	if (data->player.angle < 0)
+		data->player.angle += 2 * PI;
+	data->player.delta_x = cos(data->player.angle) * 5;
+	data->player.delta_y = sin(data->player.angle) * 5;
+	render_background(&data->img, data);
 }

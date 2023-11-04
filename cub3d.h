@@ -19,23 +19,43 @@
 #include "mlx_linux/mlx.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 #include "libft/libft.h"
 
-# define WIDTH 1366
-# define HEIGHT 768
+# define WIDTH 1366 // largeur // x
+# define HEIGHT 768 // hauteur // y
 
+# define GRID 64
+# define FOV 60
 # define BUFFER_SIZE 1
+
+# define PI 3.141592653
 
 typedef struct s_size
 {
 	int y;
 	int x;
+	int z;
 }	t_size;
+
+typedef struct s_pos
+{
+	float	x;
+	float	y;
+}	t_pos;
+
+typedef struct s_ray
+{
+	float	ray_x;
+	float	ray_y;
+}	t_ray;
 
 typedef struct s_player
 {
-	int		pos_x;
-	int		pos_y;
+	t_pos	pos;
+	float delta_x;
+	float delta_y;
+	float angle;
 }	t_player;
 
 typedef struct s_img
@@ -67,7 +87,6 @@ typedef struct s_data
 	t_img	img;
 }	t_data;
 
-
 //parsing_map.c
 void	ft_parsing(int ac, char **av, t_data *data);
 void	ft_binds(t_data *data);
@@ -83,19 +102,21 @@ char	*ft_strncat(char *dest, char *src, int n);
 char    *get_next_line(int fd);
 
 //image.c
-void	draw_square(t_img img, t_data *data, int pos_x, int pos_y);
-t_stock init_img();
-void my_put_pixel(t_data *data);
-void pixel(t_data *data, int x, int y, int color);
-void coucou(t_data *data);
+t_stock init_stock();
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
+void render_rect(t_img *img, t_img *rect, int pos_x, int pos_y);
+void render_player(t_img  *img, t_data *data, int pos_x, int pos_y);
 
 //map.c
-void draw_map(t_data *data);
+void	draw_map(t_data *data);
+void	render_background(t_img *img, t_data *data);
+int		wall_collision(t_data *data);
 
 //player.c
-void move_up(t_data *data);
-void move_down(t_data *data);
-void move_right(t_data *data);
-void move_left(t_data *data);
+void	init_player(t_data *data, int x, int y, char angle);
+void	move_up(t_data *data);
+void	move_down(t_data *data);
+void	move_right(t_data *data);
+void	move_left(t_data *data);
 
 #endif
