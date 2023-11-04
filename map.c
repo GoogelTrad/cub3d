@@ -69,6 +69,9 @@ void	draw_map(t_data *data)
 	int y;
 
 	y = 0;
+	while (data->map[y])
+		printf("map[x] = %s\n", data->map[y++]);
+	y = 0;
 	if (data->win == NULL)
 		return ;
 	data->stock = init_stock();

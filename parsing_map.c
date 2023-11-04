@@ -482,8 +482,8 @@ void    noemptyline2(char **cubs, t_cub *cub, int sizecub, int mapsize)
         free(tmp);
         i++;
     }
-    printf("%d \n", lines);
-    printf("%d \n", j);
+   // printf("%d \n", lines);
+   // printf("%d \n", j);
     cub->noemptyline[j] = NULL;
 }
 
@@ -559,15 +559,15 @@ t_cub   ft_textures(char **cubs, t_data *data)
     noemptyline2(data->cubs, &cub, tabsize(data->cubs), tabsize(data->map));
     //ft_order(cub.noemptyline, 0, 'N', 'O');
     //ft_order(cub.noemptyline, 1, 'S', 'O');
-    printf("%p\n", &cub);
+    //printf("%p\n", &cub);
     while (cub.noemptyline[i])
     {
-        printf("%s\n", cub.noemptyline[i]);
+        //printf("%s\n", cub.noemptyline[i]);
         i++;
     }
-    printf("0\n");
+    //printf("0\n");
     ft_format_texture(cub.noemptyline, 0, 'N', 'O');
-    printf("1\n");
+    //printf("1\n");
     ft_format_texture(cub.noemptyline, 1, 'S', 'O');
     ft_format_texture(cub.noemptyline, 2, 'W', 'E');
     ft_format_texture(cub.noemptyline, 3, 'E', 'A');

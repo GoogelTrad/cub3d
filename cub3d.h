@@ -25,10 +25,11 @@
 # define WIDTH 1366 // largeur // x
 # define HEIGHT 768 // hauteur // y
 
-# define GRID 64
+# define GRID 30
 # define FOV 60
 # define BUFFER_SIZE 1
 //# define space ' ', '\t', '\r', '\v'
+# define PI 3.141592653
 
 typedef struct s_cub
 {
@@ -40,8 +41,6 @@ typedef struct s_cub
     char *c;
     char **noemptyline;
 }   t_cub;
-
-# define PI 3.141592653
 
 typedef struct s_size
 {
