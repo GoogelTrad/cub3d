@@ -7,6 +7,8 @@ SRCS = main.c\
 	   map.c\
 	   image.c\
 	   player.c\
+	   get_next_line_utils.c\
+	   parsing_map2.c
 
 
 OBJS = $(SRCS:.c=.o)
