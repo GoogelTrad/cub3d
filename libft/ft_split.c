@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haouni <haouni@student.42.fr>              +#+  +:+       +#+        */
+/*   By: haouni <haouni@student.42nice.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 02:07:25 by haouni            #+#    #+#             */
-/*   Updated: 2022/11/26 04:37:38 by haouni           ###   ########.fr       */
+/*   Updated: 2023/11/04 02:05:00 by haouni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	ft_count(char const *s, char c)
 	return (count);
 }
 
-static char	**g(char **ret, char const *s, char c)
+char	**g(char **ret, char const *s, char c)
 {
 	int	i;
 	int	j;
