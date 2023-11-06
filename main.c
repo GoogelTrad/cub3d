@@ -24,6 +24,8 @@ int	main(int ac, char **av)
 	}
 	data.mlx = mlx_init();
 	data.win = mlx_new_window(data.mlx, WIDTH, HEIGHT, "Cub3D !");
+	data.height = HEIGHT;
+	data.width = WIDTH;
 	draw_map(&data);
 	ft_binds(&data);
 	mlx_loop(data.mlx);

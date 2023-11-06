@@ -27,7 +27,7 @@ t_stock init_stock(void)
 {
 	t_stock stock;
 
-	stock.floor = init_img(GRID, GRID, 0, 0xFFFFFF00);
+	stock.floor = init_img(GRID, GRID, 0, 0xFFFF00);
 	stock.wall = init_img(GRID, GRID, 0, 0x00FF0000);
 	stock.player = init_img(10, 10, 10, 0xFF000000);
 	return (stock);

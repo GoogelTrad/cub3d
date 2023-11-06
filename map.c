@@ -63,14 +63,35 @@ void	render_background(t_img *img, t_data *data)
 	render_player(img, data, data->player.pos.x, data->player.pos.y);
 }
 
+void	render_background3d(t_img *img, t_data *data)
+{
+	int x;
+	int y;
+	int i;
+	int color;
+
+	i = 0;
+	y = 0;
+	color = 0x00FFFF;
+	while (y < HEIGHT)
+	{
+		x = 0;
+		while (x < WIDTH)
+		{
+			my_mlx_pixel_put(&data->img, x, y, color);
+			x++;
+		}
+		y++;
+		if (y > (HEIGHT / 2))
+			color = 0xFFFF00;
+	}
+}
+
 void	draw_map(t_data *data)
 {
 	int x;
 	int y;
 
-	y = 0;
-	while (data->map[y])
-		printf("map[x] = %s\n", data->map[y++]);
 	y = 0;
 	if (data->win == NULL)
 		return ;
@@ -85,11 +106,13 @@ void	draw_map(t_data *data)
 		{
 			if (data->map[y][x] == 'N' || data->map[y][x] == 'E' ||
 				data->map[y][x] == 'W' || data->map[y][x] == 'S')
-				init_player(data, x * GRID, y * GRID, data->map[y][x]);
+				init_player(data, x, y, data->map[y][x]);
 			x++;
 		}
 		y++;
 	}
-	render_background(&data->img, data);
+	render_background3d(&data->img, data);
+	draw_rays(data, &data->ray, &data->player);
+	//render_background(&data->img, data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.ref, 0, 0);
 }

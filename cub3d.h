@@ -57,8 +57,28 @@ typedef struct s_pos
 
 typedef struct s_ray
 {
-	float	ray_x;
-	float	ray_y;
+	float	deltaX;
+	float	deltaY;
+	float	dirY;
+	float	dirX;
+	float	planeY;
+	float	planeX;
+	float	ray_dirX;
+	float	ray_dirY;
+	float	delta_distX;
+	float	delta_distY;
+	int		stepX;
+	int		stepY;
+	float	sideDistX;
+	float	sideDistY;
+	float	wall_dist;
+	int		mapX;
+	int		mapY;
+	int		wall;
+	int		side;
+	int		hauteur_wall;
+	int		begin_wall;
+	int		end_wall;
 }	t_ray;
 
 typedef struct s_player
@@ -101,7 +121,10 @@ typedef struct s_data
     char    **cubs;
 	char	**map;
     char    **mapcopy;
+	int		width;
+	int		height;
 	t_player player;
+	t_ray	ray;
 	t_stock	stock;
 	t_img	img;
 }	t_data;
@@ -143,5 +166,8 @@ void	move_up(t_data *data);
 void	move_down(t_data *data);
 void	move_right(t_data *data);
 void	move_left(t_data *data);
+
+//cub3d.c
+void draw_rays(t_data *data, t_ray *ray, t_player *player);
 
 #endif

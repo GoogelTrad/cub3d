@@ -17,13 +17,37 @@ void init_player(t_data *data, int x, int y, char angle)
 	data->player.pos.x = x;
 	data->player.pos.y = y;
 	if (angle == 'S')
+	{
+		data->ray.deltaX = 0;
+		data->ray.deltaY = 1;
+		data->ray.planeX = -0.66;
+		data->ray.planeY = 0;
 		data->player.angle = 1.5 * PI;
+	}
 	else if (angle == 'N')
+	{
+		data->ray.deltaX = 0;
+		data->ray.deltaY = -1;
+		data->ray.planeX = 0.66;
+		data->ray.planeY = 0;
 		data->player.angle = 0.5 * PI;
+	}
 	else if (angle == 'W')
+	{
+		data->ray.deltaX = -1;
+		data->ray.deltaY = 0;
+		data->ray.planeX = 0;
+		data->ray.planeY = -0.66;
 		data->player.angle = PI;
+	}
 	else if (angle == 'E')
+	{
+		data->ray.deltaX = 1;
+		data->ray.deltaY = 0;
+		data->ray.planeX = 0;
+		data->ray.planeY = 0.66;
 		data->player.angle = 0;
+	}
 	data->player.delta_x = cos(data->player.angle * 5);
 	data->player.delta_y = sin(data->player.angle * 5);
 }
@@ -37,7 +61,7 @@ void move_up(t_data *data)
 		data->player.pos.x += data->player.delta_x;
 		data->player.pos.y += data->player.delta_y;
 	}
-	render_background(&data->img, data);
+	//render_background(&data->img, data);
 }
 
 void move_down(t_data *data)
@@ -49,7 +73,7 @@ void move_down(t_data *data)
 		data->player.pos.x -= data->player.delta_x;
 		data->player.pos.y -= data->player.delta_y;
 	}	
-	render_background(&data->img, data);
+	//render_background(&data->img, data);
 }
 
 void move_right(t_data *data)
@@ -59,7 +83,7 @@ void move_right(t_data *data)
 		data->player.angle -= 2 * PI;
 	data->player.delta_x = cos(data->player.angle) * 5;
 	data->player.delta_y = sin(data->player.angle) * 5;
-	render_background(&data->img, data);
+	//render_background(&data->img, data);
 }
 
 void move_left(t_data *data)
@@ -69,5 +93,5 @@ void move_left(t_data *data)
 		data->player.angle += 2 * PI;
 	data->player.delta_x = cos(data->player.angle) * 5;
 	data->player.delta_y = sin(data->player.angle) * 5;
-	render_background(&data->img, data);
+	//render_background(&data->img, data);
 }
