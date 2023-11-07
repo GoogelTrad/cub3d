@@ -123,6 +123,8 @@ typedef struct s_data
     char    **mapcopy;
 	int		width;
 	int		height;
+    char    *floor;
+    char    *ceiling;
 	t_player player;
 	t_ray	ray;
 	t_stock	stock;
@@ -145,6 +147,13 @@ char	*ft_strcat(char *dest, char *src);
 char	*ft_strncpy(char *dest, char *src, int n);
 char	*ft_strncat(char *dest, char *src, int n);
 char	*ft_strjoin2(char *s1, char *s2);
+
+//utils2.c
+int     tabsize(char **cubs);
+void    ft_cleartab(char **tab);
+void    ft_missing_info_cub();
+void    ft_error_rgb();
+int     longestlen(char **map);
 
 //get_next_line.c
 char    *get_next_line(int fd);
@@ -169,5 +178,22 @@ void	move_left(t_data *data);
 
 //cub3d.c
 void draw_rays(t_data *data, t_ray *ray, t_player *player);
+
+//colors.c
+void    ft_format_color(t_data *data, char *lignecouleur, int f_c);
+
+//parsing_cub.c
+void    ft_fill_f(t_cub *cub);
+void    ft_fill_w(t_cub *cub);
+void    ft_fill_e(t_cub *cub);
+void    ft_fill_s(t_cub *cub);
+void    ft_fill_n(t_cub *cub);
+
+//parsing_cub2.c
+void    ft_all_infos_cub(t_cub *cub, char **noemptyline);
+t_cub   ft_textures(char **cubs, t_data *data);
+
+//parsing_texture.c
+int    ft_check_all_texture(char **noemptyline, char c, char d);
 
 #endif
