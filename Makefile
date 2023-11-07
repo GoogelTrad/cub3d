@@ -8,8 +8,12 @@ SRCS = main.c\
 	   image.c\
 	   player.c\
 	   get_next_line_utils.c\
-	   parsing_map2.c
-
+	   parsing_map2.c\
+	   utils2.c\
+	   colors.c\
+	   parsing_cub.c\
+	   parsing_cub2.c\
+	   parsing_texture.c
 
 OBJS = $(SRCS:.c=.o)
 LIBFT = libft/libft.a

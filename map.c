@@ -70,7 +70,7 @@ void	render_background3d(t_img *img, t_data *data)
 		}
 		y++;
 		if (y > (HEIGHT / 2))
-			color = 0xFFFF00;
+			color = 0x00FF00;
 	}
 }
 
