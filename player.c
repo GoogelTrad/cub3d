@@ -54,44 +54,42 @@ void init_player(t_data *data, int x, int y, char angle)
 
 void move_up(t_data *data)
 {
-	data->player.pos.x -= data->player.delta_x;
-	data->player.pos.y -= data->player.delta_y;
-	if (!wall_collision(data))
-	{
-		data->player.pos.x += data->player.delta_x;
-		data->player.pos.y += data->player.delta_y;
-	}
-	//render_background(&data->img, data);
+	data->player.pos.x += data->ray.deltaX * SPEED;
+	data->player.pos.y += data->ray.deltaY * SPEED;
+	final_draw(data, &data->player, &data->ray, &data->img);
 }
 
 void move_down(t_data *data)
 {
-	data->player.pos.x += data->player.delta_x;
-	data->player.pos.y += data->player.delta_y;
-	if (!wall_collision(data))
-	{
-		data->player.pos.x -= data->player.delta_x;
-		data->player.pos.y -= data->player.delta_y;
-	}	
-	//render_background(&data->img, data);
+	data->player.pos.x -= data->ray.deltaX * SPEED;
+	data->player.pos.y -= data->ray.deltaY * SPEED;
+	final_draw(data, &data->player, &data->ray, &data->img);	
 }
 
 void move_right(t_data *data)
 {
-	data->player.angle += 0.15;
-	if (data->player.angle > 2 * PI)
-		data->player.angle -= 2 * PI;
-	data->player.delta_x = cos(data->player.angle) * 5;
-	data->player.delta_y = sin(data->player.angle) * 5;
-	//render_background(&data->img, data);
+	float oldDirX;
+	float oldPlaneX;
+
+	oldDirX = data->ray.deltaX;
+	data->ray.deltaX = data->ray.deltaX * cos(-SPEED) - data->ray.deltaY * sin(-SPEED);
+	data->ray.deltaY = oldDirX * sin(-SPEED) + data->ray.deltaY * cos(-SPEED);
+	oldPlaneX = data->ray.planeX;
+	data->ray.planeX = data->ray.planeX * cos(-SPEED) - data->ray.planeY * sin(-SPEED);
+	data->ray.planeY = oldPlaneX * sin(-SPEED) + data->ray.planeY * cos(-SPEED);
+	final_draw(data, &data->player, &data->ray, &data->img);	
 }
 
 void move_left(t_data *data)
 {
-	data->player.angle -= 0.15;
-	if (data->player.angle < 0)
-		data->player.angle += 2 * PI;
-	data->player.delta_x = cos(data->player.angle) * 5;
-	data->player.delta_y = sin(data->player.angle) * 5;
-	//render_background(&data->img, data);
+	float oldDirX;
+	float oldPlaneX;
+
+	oldDirX = data->ray.deltaX;
+	data->ray.deltaX = data->ray.deltaX * cos(SPEED) - data->ray.deltaY * sin(SPEED);
+	data->ray.deltaY = oldDirX * sin(SPEED) + data->ray.deltaY * cos(SPEED);
+	oldPlaneX = data->ray.planeX;
+	data->ray.planeX = data->ray.planeX * cos(SPEED) - data->ray.planeY * sin(SPEED);
+	data->ray.planeY = oldPlaneX * sin(SPEED) + data->ray.planeY * cos(SPEED);
+	final_draw(data, &data->player, &data->ray, &data->img);	
 }

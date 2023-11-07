@@ -25,8 +25,8 @@
 # define WIDTH 1366 // largeur // x
 # define HEIGHT 768 // hauteur // y
 
-# define GRID 30
-# define FOV 60
+# define SPEED 0.5
+# define GRID 1
 # define BUFFER_SIZE 1
 //# define space ' ', '\t', '\r', '\v'
 # define PI 3.141592653
@@ -159,6 +159,7 @@ void render_player(t_img  *img, t_data *data, int pos_x, int pos_y);
 void	draw_map(t_data *data);
 void	render_background(t_img *img, t_data *data);
 int		wall_collision(t_data *data);
+void	final_draw(t_data *data, t_player *player, t_ray *ray, t_img *img);
 
 //player.c
 void	init_player(t_data *data, int x, int y, char angle);

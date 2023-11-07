@@ -12,20 +12,7 @@
 
 #include "cub3d.h"
 
-int	wall_collision(t_data *data)
-{
-	int pos_nw[2];
-	int pos_se[2];
-
-	pos_nw[0] = data->player.pos.x / GRID;
-	pos_nw[1] = data->player.pos.y / GRID;
-	pos_se[0] = (data->player.pos.x + data->stock.player.size.x) / GRID;
-	pos_se[1] = (data->player.pos.y + data->stock.player.size.y) / GRID;
-	if (data->map[pos_nw[1]][pos_nw[0]] == '1' || data->map[pos_se[1]][pos_se[0]] == '1')
-		return (0);
-	return (1);
-}
-
+/*
 void	trace_line(t_data *data, int pos_x, int pos_y)
 {
 	int x;
@@ -61,7 +48,7 @@ void	render_background(t_img *img, t_data *data)
 		y++;
 	}
 	render_player(img, data, data->player.pos.x, data->player.pos.y);
-}
+}*/
 
 void	render_background3d(t_img *img, t_data *data)
 {
@@ -85,6 +72,13 @@ void	render_background3d(t_img *img, t_data *data)
 		if (y > (HEIGHT / 2))
 			color = 0xFFFF00;
 	}
+}
+
+void final_draw(t_data *data, t_player *player, t_ray *ray, t_img *img)
+{
+	render_background3d(img, data);
+	draw_rays(data, ray, player);
+	mlx_put_image_to_window(data->mlx, data->win, img->ref, 0, 0);
 }
 
 void	draw_map(t_data *data)
@@ -111,8 +105,5 @@ void	draw_map(t_data *data)
 		}
 		y++;
 	}
-	render_background3d(&data->img, data);
-	draw_rays(data, &data->ray, &data->player);
-	//render_background(&data->img, data);
-	mlx_put_image_to_window(data->mlx, data->win, data->img.ref, 0, 0);
+	final_draw(data, &data->player, &data->ray, &data->img);
 }
