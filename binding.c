@@ -26,7 +26,7 @@ int	handle_key_press(int keycode, t_data *data)
 		mlx_destroy_window(data->mlx, data->win);
 		exit(0);
 	}
-	else if (keycode == 119)
+	else if (keycode == 119) 
 		move_up(data);
 	else if (keycode == 115)
 		move_down(data);
@@ -34,6 +34,10 @@ int	handle_key_press(int keycode, t_data *data)
 		move_right(data);
 	else if (keycode == 97)
 		move_left(data);
+	else if (keycode == 65361)
+		cam_right(data);
+	else if (keycode == 65363)
+		cam_left(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.ref, 0, 0);
 	return (0);
 }

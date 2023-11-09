@@ -25,7 +25,7 @@
 # define WIDTH 1366 // largeur // x
 # define HEIGHT 768 // hauteur // y
 
-# define SPEED 0.5
+# define SPEED 0.3
 # define GRID 1
 # define BUFFER_SIZE 1
 //# define space ' ', '\t', '\r', '\v'
@@ -59,8 +59,6 @@ typedef struct s_ray
 {
 	float	deltaX;
 	float	deltaY;
-	float	dirY;
-	float	dirX;
 	float	planeY;
 	float	planeX;
 	float	ray_dirX;
@@ -176,6 +174,8 @@ void	move_up(t_data *data);
 void	move_down(t_data *data);
 void	move_right(t_data *data);
 void	move_left(t_data *data);
+void 	cam_left(t_data *data);
+void 	cam_right(t_data *data);
 
 //cub3d.c
 void draw_rays(t_data *data, t_ray *ray, t_player *player);

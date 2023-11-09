@@ -18,10 +18,7 @@ void draw_wall(t_data *data ,t_ray *ray, int pos_x)
 
 	y = ray->begin_wall;
 	while (y < ray->end_wall)
-	{
-		my_mlx_pixel_put(&data->img, pos_x, y, data->stock.wall.color);
-		y++;
-	}
+		my_mlx_pixel_put(&data->img, pos_x, y++, data->stock.wall.color);
 }
 
 void draw_rays(t_data *data, t_ray *ray, t_player *player)
@@ -35,8 +32,8 @@ void draw_rays(t_data *data, t_ray *ray, t_player *player)
 		ray->mapX = (int)player->pos.x;
 		ray->mapY = (int)player->pos.y;
 		cameraX = 2 * x / (float)data->width - 1;
-		ray->ray_dirX = player->delta_x + ray->planeX * cameraX;
-		ray->ray_dirY = player->delta_y + ray->planeY * cameraX;
+		ray->ray_dirX = ray->deltaX + ray->planeX * cameraX;
+		ray->ray_dirY = ray->deltaY + ray->planeY * cameraX;
 		if (ray->ray_dirX == 0)
 			ray->delta_distX = 1e30;
 		else

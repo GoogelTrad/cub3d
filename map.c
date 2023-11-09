@@ -76,6 +76,7 @@ void	render_background3d(t_img *img, t_data *data)
 
 void final_draw(t_data *data, t_player *player, t_ray *ray, t_img *img)
 {
+	//mlx_clear_window(data->mlx, data->win);
 	render_background3d(img, data);
 	draw_rays(data, ray, player);
 	mlx_put_image_to_window(data->mlx, data->win, img->ref, 0, 0);
