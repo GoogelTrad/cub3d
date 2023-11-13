@@ -1,10 +1,10 @@
 
-   SO  ./path_to_the_north_texture
-	     NO ./path_to_the_north_texture
+   SO  xpm/Bricks_17-512x512.xpm
+	     NO		xpm/Bricks_22-512x512.xpm
 
 
-		WE		./path_to_the_north_texture
-		EA ./aaa
+		WE		xpm/Bricks_23-512x512.xpm
+		EA xpm/Bricks_25-512x512.xpm
 	    F		74,253,255
 		C               9,22,62
 

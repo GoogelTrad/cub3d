@@ -455,7 +455,7 @@ void    ft_parsing(int ac, char **av, t_data *data)
     ft_args(ac, av);
     ft_mapsave(ac, av, data);
     data->map = initmap2(data->cubs);
-    ft_textures(data->cubs, data);
+    data->cub = ft_textures(data->cubs, data);
     ft_top_and_bot(data->map, 0);
     ft_leftside(data->map);
     ft_rightside(data->map);

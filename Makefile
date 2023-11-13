@@ -13,7 +13,8 @@ SRCS = main.c\
 	   colors.c\
 	   parsing_cub.c\
 	   parsing_cub2.c\
-	   parsing_texture.c
+	   parsing_texture.c\
+	   parsing_cub3.c
 
 OBJS = $(SRCS:.c=.o)
 LIBFT = libft/libft.a

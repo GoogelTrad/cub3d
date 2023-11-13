@@ -40,6 +40,7 @@ typedef struct s_cub
     char *f;
     char *c;
     char **noemptyline;
+    char **txt;
 }   t_cub;
 
 typedef struct s_size
@@ -127,6 +128,7 @@ typedef struct s_data
 	t_ray	ray;
 	t_stock	stock;
 	t_img	img;
+    t_cub   cub;
 }	t_data;
 
 //parsing_map.c
@@ -193,6 +195,11 @@ void    ft_fill_n(t_cub *cub);
 //parsing_cub2.c
 void    ft_all_infos_cub(t_cub *cub, char **noemptyline);
 t_cub   ft_textures(char **cubs, t_data *data);
+
+//parsing_cub3.c
+void    ft_check_wall_dif(t_cub *cub);
+void    ft_check_dif_txt(char **txt);
+void    ft_check_open_txt(char **txt);
 
 //parsing_texture.c
 int    ft_check_all_texture(char **noemptyline, char c, char d);

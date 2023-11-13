@@ -96,14 +96,13 @@ t_cub   ft_textures(char **cubs, t_data *data)
     //ft_order(cub.noemptyline, 0, 'N', 'O');
     //ft_order(cub.noemptyline, 1, 'S', 'O');
     //printf("%p\n", &cub);
-    while (cub.noemptyline[i])
-    {
-        printf("%s\n", cub.noemptyline[i]);
-        i++;
-    }
     ft_all_infos_cub(&cub, cub.noemptyline);
     ft_format_color(data, cub.f, 1);
     ft_format_color(data, cub.c, 2);
+    ft_check_wall_dif(&cub);
+    ft_check_dif_txt(cub.txt);
+    ft_check_open_txt(cub.txt);
+    //printf("%s\n", cub.no);
     //ft_format_texture(cub.noemptyline, 0, 'N', 'O');
     //printf("1\n");
     //ft_format_texture(cub.noemptyline, 1, 'S', 'O');
