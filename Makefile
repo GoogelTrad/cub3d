@@ -14,12 +14,15 @@ SRCS = main.c\
 	   parsing_cub.c\
 	   parsing_cub2.c\
 	   parsing_texture.c\
-	   parsing_cub3.c
+	   parsing_cub3.c\
+	   parsing_map3.c\
+	   parsing_arg.c\
+	   map_save.c
 
 OBJS = $(SRCS:.c=.o)
 LIBFT = libft/libft.a
 CC = gcc
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror 
 NAME = cub3d
 LLINKS = -Lmlx_linux -lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm
 COMPIL_LINUX = -I/usr/include -Imlx_linux
