@@ -17,10 +17,10 @@ SRCS = main.c\
 	   parsing_cub3.c\
 	   texture.c\
 	   init_player.c\
-	   minimap.c
+	   minimap.c\
 	   parsing_map3.c\
 	   parsing_arg.c\
-	   map_save.c
+	   map_save.c\
 
 OBJS = $(SRCS:.c=.o)
 LIBFT = libft/libft.a

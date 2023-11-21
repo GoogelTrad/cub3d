@@ -39,7 +39,7 @@ void	render_background3d(t_img *img, t_data *data)
 
 	i = 0;
 	y = 0;
-	color = strtol(data->ceiling, NULL, 16);
+	color = data->ceiling;
 	while (y < HEIGHT)
 	{
 		x = 0;
@@ -50,7 +50,7 @@ void	render_background3d(t_img *img, t_data *data)
 		}
 		y++;
 		if (y > (HEIGHT / 2))
-			color = strtol(data->floor, NULL, 16);
+			color = data->floor;
 	}
 }
 
@@ -58,7 +58,7 @@ void	final_draw(t_data *data, t_player *player, t_ray *ray, t_img *img)
 {
 	render_background3d(img, data);
 	draw_rays(data, ray, player, &data->stock);
-	minimap(data);
+	//minimap(data);
 	mlx_put_image_to_window(data->mlx, data->win, img->ref, 0, 0);
 }
 
@@ -87,6 +87,6 @@ void	draw_map(t_data *data)
 		}
 		y++;
 	}
-	data->minimap = init_minimap(data, 1);
+	//data->minimap = init_minimap(data, 1);
 	final_draw(data, &data->player, &data->ray, &data->img);
 }
