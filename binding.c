@@ -38,7 +38,7 @@ int	handle_key_press(int keycode, t_data *data)
 		cam_right(data);
 	else if (keycode == 65363)
 		cam_left(data);
-	mlx_put_image_to_window(data->mlx, data->win, data->img.ref, 0, 0);
+	//mlx_put_image_to_window(data->mlx, data->win, data->img.ref, 0, 0);
 	return (0);
 }
 

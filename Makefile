@@ -14,7 +14,10 @@ SRCS = main.c\
 	   parsing_cub.c\
 	   parsing_cub2.c\
 	   parsing_texture.c\
-	   parsing_cub3.c
+	   parsing_cub3.c\
+	   texture.c\
+	   init_player.c\
+	   minimap.c
 
 OBJS = $(SRCS:.c=.o)
 LIBFT = libft/libft.a

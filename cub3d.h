@@ -24,9 +24,10 @@
 
 # define WIDTH 1366 // largeur // x
 # define HEIGHT 768 // hauteur // y
-
+# define TEX_WIDTH 512
 # define SPEED 0.3
-# define GRID 1
+# define CAM_SPEED 0.78539816 / 2
+# define GRID 10
 # define BUFFER_SIZE 1
 //# define space ' ', '\t', '\r', '\v'
 # define PI 3.141592653
@@ -40,7 +41,7 @@ typedef struct s_cub
     char *f;
     char *c;
     char **noemptyline;
-    char **txt;
+    char **txt; //nord sud ouest est
 }   t_cub;
 
 typedef struct s_size
@@ -58,26 +59,29 @@ typedef struct s_pos
 
 typedef struct s_ray
 {
-	float	deltaX;
-	float	deltaY;
-	float	planeY;
-	float	planeX;
-	float	ray_dirX;
-	float	ray_dirY;
-	float	delta_distX;
-	float	delta_distY;
-	int		stepX;
-	int		stepY;
-	float	sideDistX;
-	float	sideDistY;
+	float	deltax;
+	float	deltay;
+	float	planey;
+	float	planex;
+	float	ray_dirx;
+	float	ray_diry;
+	float	delta_distx;
+	float	delta_disty;
+	int		stepx;
+	int		stepy;
+	float	sidedistx;
+	float	sidedisty;
 	float	wall_dist;
-	int		mapX;
-	int		mapY;
-	int		wall;
+	float	wallx;
+	int		texx;
+	int		texy;
+	int		mapx;
+	int		mapy;
 	int		side;
 	int		hauteur_wall;
 	int		begin_wall;
 	int		end_wall;
+	int		direction;
 }	t_ray;
 
 typedef struct s_player
@@ -87,6 +91,15 @@ typedef struct s_player
 	float delta_y;
 	float angle;
 }	t_player;
+
+typedef struct s_minimap
+{
+	t_pos	max;
+	t_pos	min;
+	t_pos	player;
+	char	**map;
+}	t_minimap;
+
 
 typedef struct s_p
 {
@@ -125,9 +138,11 @@ typedef struct s_data
     char    *floor;
     char    *ceiling;
 	t_player player;
+	t_minimap minimap;
 	t_ray	ray;
 	t_stock	stock;
 	t_img	img;
+	t_img	**wall;
     t_cub   cub;
 }	t_data;
 
@@ -159,28 +174,24 @@ int     longestlen(char **map);
 char    *get_next_line(int fd);
 
 //image.c
-t_stock init_stock();
+t_stock init_stock(t_data *data);
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 void render_rect(t_img *img, t_img *rect, int pos_x, int pos_y);
 void render_player(t_img  *img, t_data *data, int pos_x, int pos_y);
 
 //map.c
+void	calc_wall(t_ray *ray, t_data *data);
 void	draw_map(t_data *data);
-void	render_background(t_img *img, t_data *data);
-int		wall_collision(t_data *data);
 void	final_draw(t_data *data, t_player *player, t_ray *ray, t_img *img);
 
 //player.c
-void	init_player(t_data *data, int x, int y, char angle);
 void	move_up(t_data *data);
 void	move_down(t_data *data);
 void	move_right(t_data *data);
 void	move_left(t_data *data);
-void 	cam_left(t_data *data);
-void 	cam_right(t_data *data);
 
 //cub3d.c
-void draw_rays(t_data *data, t_ray *ray, t_player *player);
+void draw_rays(t_data *data, t_ray *ray, t_player *player, t_stock *stock);
 
 //colors.c
 void    ft_format_color(t_data *data, char *lignecouleur, int f_c);
@@ -203,5 +214,19 @@ void    ft_check_open_txt(char **txt);
 
 //parsing_texture.c
 int    ft_check_all_texture(char **noemptyline, char c, char d);
+
+//texture.c
+t_img	**init_wall(t_data *data);
+void	texturing_ray(t_ray *ray, t_data *data, t_stock *stock, int x);
+
+//init_player.c
+void 	cam_left(t_data *data);
+void 	cam_right(t_data *data);
+void	init_player(t_data *data, int x, int y, char angle);
+
+//minimap.c
+void	rotate_minimap(t_data *data, int sens);
+void	minimap(t_data *data);
+t_minimap init_minimap(t_data *data, int verif);
 
 #endif

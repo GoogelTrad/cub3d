@@ -12,54 +12,34 @@
 
 #include "cub3d.h"
 
-/*
-void	trace_line(t_data *data, int pos_x, int pos_y)
+void	calc_wall(t_ray *ray, t_data *data)
 {
-	int x;
-	int y;
-
-	y = pos_y;
-	x = pos_x;
-	while (y < pos_y + GRID)
-		my_mlx_pixel_put(&data->img, pos_x, y++, 0x00000000);
-	while (x < pos_x + GRID)
-		my_mlx_pixel_put(&data->img, x++, pos_y, 0x00000000);
+	ray->wallx -= floor(ray->wallx);
+	ray->texx = (int)(ray->wallx * (double)(TEX_WIDTH));
+	if (ray->side == 0 && ray->ray_dirx > 0)
+		ray->texx = TEX_WIDTH - ray->texx - 1;
+	else if (ray->side == 1 && ray->ray_diry < 0)
+		ray->texx = TEX_WIDTH - ray->texx - 1;
+	ray->hauteur_wall = (int)(data->height / ray->wall_dist);
+	ray->begin_wall = -(ray->hauteur_wall) / 2 + data->height / 2;
+	if (ray->begin_wall < 0)
+		ray->begin_wall = 0;
+	ray->end_wall = ray->hauteur_wall / 2 + data->height / 2;
+	if (ray->end_wall >= data->height)
+		ray->end_wall = data->height - 1;
 }
-
-void	render_background(t_img *img, t_data *data)
-{
-	int x;
-	int y;
-
-	y = 0;
-	while (data->map[y] && y * GRID <= HEIGHT)
-	{
-		x = 0;
-		while (data->map[y][x] && x * GRID <= WIDTH)
-		{
-			if (data->map[y][x] == '1')
-				render_rect(img, &data->stock.wall, x * GRID, y * GRID);
-			else if (data->map[y][x] == '0' || data->map[y][x] == 'X' || data->map[y][x] == 'N' ||
-				data->map[y][x] == 'E' || data->map[y][x] == 'W' || data->map[y][x] == 'S')
-				render_rect(img, &data->stock.floor, x * GRID, y * GRID);
-			trace_line(data, x * GRID, y * GRID);
-			x++;
-		}
-		y++;
-	}
-	render_player(img, data, data->player.pos.x, data->player.pos.y);
-}*/
 
 void	render_background3d(t_img *img, t_data *data)
 {
-	int x;
-	int y;
-	int i;
-	int color;
+	int		x;
+	int		y;
+	int		i;
+	int		color;
+	char	*colors;
 
 	i = 0;
 	y = 0;
-	color = 0x00FFFF;
+	color = strtol(data->ceiling, NULL, 16);
 	while (y < HEIGHT)
 	{
 		x = 0;
@@ -70,30 +50,31 @@ void	render_background3d(t_img *img, t_data *data)
 		}
 		y++;
 		if (y > (HEIGHT / 2))
-			color = 0x00FF00;
+			color = strtol(data->floor, NULL, 16);
 	}
 }
 
-void final_draw(t_data *data, t_player *player, t_ray *ray, t_img *img)
+void	final_draw(t_data *data, t_player *player, t_ray *ray, t_img *img)
 {
-	//mlx_clear_window(data->mlx, data->win);
 	render_background3d(img, data);
-	draw_rays(data, ray, player);
+	draw_rays(data, ray, player, &data->stock);
+	minimap(data);
 	mlx_put_image_to_window(data->mlx, data->win, img->ref, 0, 0);
 }
 
 void	draw_map(t_data *data)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	y = 0;
 	if (data->win == NULL)
 		return ;
-	data->stock = init_stock();
 	data->img.ref = mlx_new_image(data->mlx, WIDTH, HEIGHT);
 	data->img.addr = mlx_get_data_addr(data->img.ref, &data->img.bpp,
-		&data->img.lenght, &data->img.endian);
+			&data->img.lenght, &data->img.endian);
+	data->stock = init_stock(data);
+	data->wall = init_wall(data);
 	while (data->map[y])
 	{
 		x = 0;
@@ -106,5 +87,6 @@ void	draw_map(t_data *data)
 		}
 		y++;
 	}
+	data->minimap = init_minimap(data, 1);
 	final_draw(data, &data->player, &data->ray, &data->img);
 }
