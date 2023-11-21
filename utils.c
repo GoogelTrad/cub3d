@@ -14,17 +14,17 @@
 
 int	count_line(char *pathname)
 {
-	int fd;
-	char buf;
-	int count;
-	int i;
+	int		fd;
+	char	buf;
+	int		count;
+	int		i;
 
 	i = 0;
 	count = 0;
 	fd = open(pathname, O_RDONLY);
 	while (read(fd, &buf, 1) != 0)
 	{
-		if (buf = '\n')
+		if (buf == '\n')
 			count++;
 	}
 	close(fd);

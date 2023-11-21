@@ -20,13 +20,12 @@ int	d_close(t_data *data)
 
 int	handle_key_press(int keycode, t_data *data)
 {
-    //printf("%d \n", keycode);
 	if (keycode == 65307)
 	{
 		mlx_destroy_window(data->mlx, data->win);
 		exit(0);
 	}
-	else if (keycode == 119) 
+	else if (keycode == 119)
 		move_up(data);
 	else if (keycode == 115)
 		move_down(data);
@@ -42,8 +41,8 @@ int	handle_key_press(int keycode, t_data *data)
 	return (0);
 }
 
-void ft_binds(t_data *data)
+void	ft_binds(t_data *data)
 {
-    mlx_hook(data->win, 2, 1L << 0, handle_key_press, data);
-    mlx_hook(data->win, 17, 0L, d_close, data);
+	mlx_hook(data->win, 2, 1L << 0, handle_key_press, data);
+	mlx_hook(data->win, 17, 0L, d_close, data);
 }

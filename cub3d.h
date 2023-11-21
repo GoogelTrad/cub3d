@@ -135,8 +135,8 @@ typedef struct s_data
     char    **mapcopy;
 	int		width;
 	int		height;
-    char    *floor;
-    char    *ceiling;
+    int     floor;
+    int     ceiling;
 	t_player player;
 	t_minimap minimap;
 	t_ray	ray;
@@ -155,6 +155,20 @@ int     tabsize(char **cubs);
 //parsing_map2.c
 void    ft_map_parsing(t_data *data);
 
+//parsing_map3.c
+void    ft_pos_player(t_p *begin, t_data *data);
+void	ft_fill(t_p *begin, t_data *data);
+void	ft_path(t_data *data);
+//parsing_arg.c
+void	ft_args(int ac, char **av);
+void	ft_cub(int ac, char **av);
+char    **initmap2(char **cubs);
+int     countmapline(char **cubs);
+//map_save.c
+int     ft_beforemap(char **cubs, int sizecub, int mapsize);
+char    **parscub(char **cubs, int mapsize, int sizecub);
+void	ft_mapsave(int ac, char **av, t_data *data);
+
 //utils.c
 int		count_line(char *pathname);
 char	*ft_strcpy(char *dest, char *src);
@@ -166,8 +180,8 @@ char	*ft_strjoin2(char *s1, char *s2);
 //utils2.c
 int     tabsize(char **cubs);
 void    ft_cleartab(char **tab);
-void    ft_missing_info_cub();
-void    ft_error_rgb();
+void    ft_missing_info_cub(void);
+void    ft_error_rgb(void);
 int     longestlen(char **map);
 
 //get_next_line.c
