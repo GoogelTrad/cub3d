@@ -69,7 +69,6 @@ void	cam_right(t_data *data)
 		- data->ray.planey * sin(-CAM_SPEED);
 	data->ray.planey = oldplanex * sin(-CAM_SPEED)
 		+ data->ray.planey * cos(-CAM_SPEED);
-	rotate_minimap(data, 0);
 	final_draw(data, &data->player, &data->ray, &data->img);
 }
 
@@ -88,6 +87,5 @@ void	cam_left(t_data *data)
 		- data->ray.planey * sin(CAM_SPEED);
 	data->ray.planey = oldplanex * sin(CAM_SPEED)
 		+ data->ray.planey * cos(CAM_SPEED);
-	rotate_minimap(data, 1);
 	final_draw(data, &data->player, &data->ray, &data->img);
 }

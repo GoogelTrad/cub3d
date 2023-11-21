@@ -76,7 +76,7 @@ void	ft_mapsave(char **av, t_data *data)
 			temp = str;
 			str = ft_strjoin2(temp, x);
 		}
-        free(x);
+		free(x);
 	}
 	data->cubs = ft_split(str, '\n');
 	free(str);

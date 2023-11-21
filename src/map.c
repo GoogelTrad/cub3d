@@ -55,7 +55,6 @@ void	final_draw(t_data *data, t_player *player, t_ray *ray, t_img *img)
 {
 	render_background3d(img, data);
 	draw_rays(data, ray, player, &data->stock);
-	//minimap(data);
 	mlx_put_image_to_window(data->mlx, data->win, img->ref, 0, 0);
 }
 
@@ -84,6 +83,5 @@ void	draw_map(t_data *data)
 		}
 		y++;
 	}
-	//data->minimap = init_minimap(data, 1);
 	final_draw(data, &data->player, &data->ray, &data->img);
 }

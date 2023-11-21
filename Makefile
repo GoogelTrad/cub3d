@@ -1,26 +1,25 @@
-SRCS = main.c\
-	   cub3d.c\
-	   parsing_map.c\
-	   binding.c\
-	   utils.c\
-	   get_next_line.c\
-	   map.c\
-	   image.c\
-	   player.c\
-	   get_next_line_utils.c\
-	   parsing_map2.c\
-	   utils2.c\
-	   colors.c\
-	   parsing_cub.c\
-	   parsing_cub2.c\
-	   parsing_texture.c\
-	   parsing_cub3.c\
-	   texture.c\
-	   init_player.c\
-	   minimap.c\
-	   parsing_map3.c\
-	   parsing_arg.c\
-	   map_save.c\
+SRCS = src/main.c\
+	   src/cub3d.c\
+	   src/parsing_map.c\
+	   src/binding.c\
+	   src/utils.c\
+	   src/get_next_line.c\
+	   src/map.c\
+	   src/image.c\
+	   src/player.c\
+	   src/get_next_line_utils.c\
+	   src/parsing_map2.c\
+	   src/utils2.c\
+	   src/colors.c\
+	   src/parsing_cub.c\
+	   src/parsing_cub2.c\
+	   src/parsing_texture.c\
+	   src/parsing_cub3.c\
+	   src/texture.c\
+	   src/init_player.c\
+	   src/parsing_map3.c\
+	   src/parsing_arg.c\
+	   src/map_save.c\
 
 OBJS = $(SRCS:.c=.o)
 LIBFT = libft/libft.a
