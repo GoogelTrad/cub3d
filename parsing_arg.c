@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-void	ft_args(int ac, char **av)
+void	ft_args(char **av)
 {
 	char	**split;
 	int		i;
@@ -56,13 +56,13 @@ void	ft_cub(int ac, char **av)
 
 int	countmapline(char **cubs)
 {
-	int	lines;
 	int	i;
 	int	j;
 	int	k;
 
 	i = 0;
 	j = 0;
+	k = 0;
 	while (cubs[i])
 	{
 		while (cubs[i][j] == ' ')

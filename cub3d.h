@@ -160,14 +160,14 @@ void    ft_pos_player(t_p *begin, t_data *data);
 void	ft_fill(t_p *begin, t_data *data);
 void	ft_path(t_data *data);
 //parsing_arg.c
-void	ft_args(int ac, char **av);
+void	ft_args(char **av);
 void	ft_cub(int ac, char **av);
 char    **initmap2(char **cubs);
 int     countmapline(char **cubs);
 //map_save.c
 int     ft_beforemap(char **cubs, int sizecub, int mapsize);
 char    **parscub(char **cubs, int mapsize, int sizecub);
-void	ft_mapsave(int ac, char **av, t_data *data);
+void	ft_mapsave(char **av, t_data *data);
 
 //utils.c
 int		count_line(char *pathname);
@@ -219,7 +219,7 @@ void    ft_fill_n(t_cub *cub);
 
 //parsing_cub2.c
 void    ft_all_infos_cub(t_cub *cub, char **noemptyline);
-t_cub   ft_textures(char **cubs, t_data *data);
+t_cub   ft_textures(t_data *data);
 
 //parsing_cub3.c
 void    ft_check_wall_dif(t_cub *cub);

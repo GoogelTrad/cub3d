@@ -47,7 +47,7 @@ void	ft_all_infos_cub(t_cub *cub, char **noemptyline)
 	ft_fill_c(cub);
 }
 
-int	noemptyline(char **cubs, t_cub *cub, int sizecub, int mapsize)
+int	noemptyline(char **cubs, int sizecub, int mapsize)
 {
 	int		i;
 	char	*tmp;
@@ -77,11 +77,10 @@ void	noemptyline2(char **cubs, t_cub *cub, int sizecub, int mapsize)
 	int		i;
 	int		lines;
 	char	*tmp;
-	char	*tmp2;
 
 	j = 0;
 	i = 0;
-	lines = noemptyline(cubs, cub, sizecub, mapsize);
+	lines = noemptyline(cubs, sizecub, mapsize);
 	cub->noemptyline = malloc(sizeof(char *) * (lines + 1));
 	while (i <= sizecub - mapsize)
 	{
@@ -97,7 +96,7 @@ void	noemptyline2(char **cubs, t_cub *cub, int sizecub, int mapsize)
 	cub->noemptyline[j] = NULL;
 }
 
-t_cub	ft_textures(char **cubs, t_data *data)
+t_cub	ft_textures(t_data *data)
 {
 	t_cub	cub;
 

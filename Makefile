@@ -46,7 +46,7 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all ${NAME} clean flcean re
+.PHONY: all clean flcean re
 
 %.o: %.c
 	gcc $(FLAGS) $(COMPIL_LINUX) -c $< -o $@

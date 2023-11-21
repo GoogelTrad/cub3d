@@ -29,7 +29,6 @@ void	ft_trim_to_txt(t_cub *cub, char **tmp)
 void	ft_check_wall_dif(t_cub *cub)
 {
 	int		i;
-	int		j;
 	char	**tmp;
 
 	tmp = malloc(sizeof(char *) * 5);

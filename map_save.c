@@ -57,23 +57,7 @@ int	ft_beforemap(char **cubs, int sizecub, int mapsize)
 	return (j);
 }
 
-char	**parscub(char **cubs, int mapsize, int sizecub)
-{
-	int	i;
-	int	j;
-
-	j = 0;
-	i = 0;
-	while (i < sizecub - mapsize)
-	{
-		if (cubs[i] == NULL)
-			i++;
-		j++;
-		i++;
-	}
-}
-
-void	ft_mapsave(int ac, char **av, t_data *data)
+void	ft_mapsave(char **av, t_data *data)
 {
 	int		fd;
 	char	*str;
@@ -92,6 +76,7 @@ void	ft_mapsave(int ac, char **av, t_data *data)
 			temp = str;
 			str = ft_strjoin2(temp, x);
 		}
+        free(x);
 	}
 	data->cubs = ft_split(str, '\n');
 	free(str);

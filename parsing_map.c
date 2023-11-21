@@ -33,30 +33,6 @@ int	ft_top_and_bot(char **map, int i)
 	return (0);
 }
 
-/*
-void    ft_closed_map(char **map)
-{
-    int i = 0;
-    int j = 0;
-    while (map[i])
-    {
-        while (map[i][j] == ' ')
-            j++;
-        if (ft_isdigit(map[i][j]) == 1)
-        {
-            printf("AAAAA \n \n");
-            //exit(2);
-        }
-        else
-        {
-            printf("%s \n", "Error \n MAP PROBLEMS");
-            exit(1);
-        }
-    }
-    j = 0;
-}
-*/
-
 void	ft_char(char **map)
 {
 	int	i;
@@ -82,161 +58,6 @@ void	ft_char(char **map)
 		i++;
 	}
 }
-
-/*
-char    *ft_texture_no(char **cubs)
-{
-    int i;
-    char *texture_no;
-    char *tmp;
-
-    i = 0;
-    texture_no = ft_strdup("");
-    while (cubs[i])
-    {
-        while(cubs[i][0] != 'N' && cubs[i][1] != 'O')
-            i++;
-        if (cubs[i][0] == 'N' && cubs[i][1] == 'O')
-            texture_no = ft_strdup(cubs[i]);
-        else
-        {
-            printf("%s \n", "Error\n missing North texture");
-            exit(1);
-        }
-    }
-    return(texture_no);
-}
-
-char    *ft_texture_so(char **cubs)
-{
-    int i;
-    char *texture_so;
-    char *tmp;
-
-    i = 0;
-    texture_so = ft_strdup("");
-    while (cubs[i])
-    {
-        while(cubs[i][0] != 'S' && cubs[i][1] != 'O')
-            i++;
-        if (cubs[i][0] == 'S' && cubs[i][1] == 'O')
-        {
-            texture_so = ft_strdup(cubs[i]);
-            return(texture_so);
-        }
-        else
-        {
-            printf("%s \n", "Error\n missing South texture");
-            exit(1);
-        }
-    }
-    return(texture_so);
-}
-
-char    *ft_texture_we(char **cubs)
-{
-    int i;
-    char *texture_we;
-    char *tmp;
-
-    i = 0;
-    texture_we = ft_strdup("");
-    while (cubs[i])
-    {
-        while(cubs[i][0] != 'W' && cubs[i][1] != 'E')
-            i++;
-        if (cubs[i][0] == 'W' && cubs[i][1] == 'E')
-        {
-            texture_we = ft_strdup(cubs[i]);
-            return(texture_we);
-        }
-        else
-        {
-            printf("%s \n", "Error\n missing West texture");
-            exit(1);
-        }
-    }
-    return(texture_we);
-}
-
-char    *ft_texture_ea(char **cubs)
-{
-    int i;
-    char *texture_ea;
-    char *tmp;
-
-    i = 0;
-    texture_ea = ft_strdup("");
-    while (cubs[i])
-    {
-        while(cubs[i][0] != 'E' && cubs[i][1] != 'A')
-            i++;
-        if (cubs[i][0] == 'E' && cubs[i][1] == 'A')
-        {
-            texture_ea = ft_strdup(cubs[i]);
-            return(texture_ea);
-        }
-        else
-        {
-            printf("%s \n", "Error\n missing East texture");
-            exit(1);
-        }
-    }
-    return(texture_ea);
-}
-
-char    *ft_floor_colors(char **cubs)
-{
-    int i;
-    char *floor_co;
-    char *tmp;
-
-    i = 0;
-    floor_co = ft_strdup("");
-    while (cubs[i])
-    {
-        while(cubs[i][0] != 'F')
-            i++;
-        if (cubs[i][0] == 'F')
-        {
-            floor_co = ft_strdup(cubs[i]);
-            return(floor_co);
-        }
-        else
-        {
-            printf("%s \n", "Error\n missing Floor color");
-            exit(1);
-        }
-    }
-    return(floor_co);
-}
-
-char    *ft_roof_colors(char **cubs)
-{
-    int i;
-    char *roof_co;
-    char *tmp;
-
-    i = 0;
-    roof_co = ft_strdup("");
-    while (cubs[i])
-    {
-        while(cubs[i][0] != 'F')
-            i++;
-        if (cubs[i][0] == 'F')
-        {
-            roof_co = ft_strdup(cubs[i]);
-            return(roof_co);
-        }
-        else
-        {
-            printf("%s \n", "Error\n missing roof color");
-            exit(1);
-        }
-    }
-    return(roof_co);
-}
-*/
 
 void	ft_leftside(char **map)
 {
@@ -280,10 +101,10 @@ void	ft_rightside(char **map)
 void	ft_parsing(int ac, char **av, t_data *data)
 {
 	ft_cub(ac, av);
-	ft_args(ac, av);
-	ft_mapsave(ac, av, data);
+	ft_args(av);
+	ft_mapsave(av, data);
 	data->map = initmap2(data->cubs);
-	data->cub = ft_textures(data->cubs, data);
+	data->cub = ft_textures(data);
 	ft_top_and_bot(data->map, 0);
 	ft_leftside(data->map);
 	ft_rightside(data->map);

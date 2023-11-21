@@ -94,7 +94,6 @@ void	minimap(t_data *data)
 {
 	int	x;
 	int	y;
-	int	limit;
 
 	y = 0;
 	//printf("x = %f, y = %f\n", data->minimap.player.x, data->minimap.player.y);
