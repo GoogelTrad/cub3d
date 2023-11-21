@@ -33,11 +33,8 @@ void	render_background3d(t_img *img, t_data *data)
 {
 	int		x;
 	int		y;
-	int		i;
 	int		color;
-	char	*colors;
 
-	i = 0;
 	y = 0;
 	color = data->ceiling;
 	while (y < HEIGHT)
@@ -45,7 +42,7 @@ void	render_background3d(t_img *img, t_data *data)
 		x = 0;
 		while (x < WIDTH)
 		{
-			my_mlx_pixel_put(&data->img, x, y, color);
+			my_mlx_pixel_put(img, x, y, color);
 			x++;
 		}
 		y++;
@@ -73,7 +70,7 @@ void	draw_map(t_data *data)
 	data->img.ref = mlx_new_image(data->mlx, WIDTH, HEIGHT);
 	data->img.addr = mlx_get_data_addr(data->img.ref, &data->img.bpp,
 			&data->img.lenght, &data->img.endian);
-	data->stock = init_stock(data);
+	data->stock = init_stock();
 	data->wall = init_wall(data);
 	while (data->map[y])
 	{

@@ -49,4 +49,4 @@ re: fclean all
 .PHONY: all ${NAME} clean flcean re
 
 %.o: %.c
-	gcc $(COMPIL_LINUX) -c $< -o $@
+	gcc $(FLAGS) $(COMPIL_LINUX) -c $< -o $@

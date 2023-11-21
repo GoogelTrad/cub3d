@@ -22,7 +22,7 @@ t_img	init_img(int size, int color)
 	return (img);
 }
 
-t_stock	init_stock(t_data *data)
+t_stock	init_stock(void)
 {
 	t_stock	stock;
 

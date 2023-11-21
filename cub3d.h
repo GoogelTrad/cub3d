@@ -188,7 +188,7 @@ int     longestlen(char **map);
 char    *get_next_line(int fd);
 
 //image.c
-t_stock init_stock(t_data *data);
+t_stock init_stock(void);
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 void render_rect(t_img *img, t_img *rect, int pos_x, int pos_y);
 void render_player(t_img  *img, t_data *data, int pos_x, int pos_y);

@@ -35,7 +35,6 @@ void	ft_couleur(t_data *data, char **rgb, int f_c)
 	int		r;
 	int		g;
 	int		b;
-	char	*hexa;
 
 	ft_check_range_rgb(rgb);
 	r = ft_atoi(rgb[0]);
